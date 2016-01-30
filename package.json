@@ -1,7 +1,7 @@
 {
-  "name": "hello",
+  "name": "echo-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Here's a simple JavaScript bot that forwards messages to another chat",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
     "node-telegram-bot-api": "^0.19.2"
   }
 }
