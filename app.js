@@ -18,12 +18,12 @@ bot.on('message', function (msg) {
     else {
         // на все остальные сообщения боту мы не реагируем,
         // если только это не ответы внутри нашей группы техподдержки
-    	if (msg.chat.id === config.chatid) {
-    		// console.log("Message sent from Tech Support chat...");
+        if (msg.chat.id.toString() === config.chatid) {
+    		console.log("Message sent from Tech Support chat...");
     		if ("reply_to_message" in msg) {
     			// console.log("Message sent from Tech Support chat VIA Reply!.");
                 var answerText = msg.chat.text || "<empty>";
-                console.log("Sen answer: "+answerText);
+                console.log("Send answer: "+answerText);
 	            bot.forwardMessage(msg.reply_to_message.forward_from.id, config.chatid, msg.message_id);
 	            return;
         	}
