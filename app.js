@@ -3,7 +3,6 @@ var TelegramBot = require('node-telegram-bot-api');
 var bot = new TelegramBot(config.token, {polling: true});
 
 bot.on('message', function (msg) {
-
     // "privete" в чате означате, что сообщение было отпарвлено напрямую боту
     // такие сообщение мы все пресылаем forward'ом в наш специальный чат тех.поддержки
     // делаем это именно forward'ом, чтобы в чате кто-то мог ответить reply'ем на обращение
@@ -11,13 +10,13 @@ bot.on('message', function (msg) {
 	if (msg.chat.type === "private") {
 
         // console.log("Message sent from private chat.");
-        var questionText = msg.chat.text || "<empty>";
+        var questionText = msg.text || "<empty>";
         console.log("Got question: "+questionText);
 
+        console.log(questionText);
         if (questionText === '/start') {
             return; // игнорируем стартовое сообщение
         }
-
     	bot.forwardMessage(config.chatid, msg.chat.id, msg.message_id);
     	bot.sendMessage(msg.chat.id, config.answer);
     }
