@@ -9,9 +9,15 @@ bot.on('message', function (msg) {
     // делаем это именно forward'ом, чтобы в чате кто-то мог ответить reply'ем на обращение
     // и тогда ответ можно переслать именно автору обращения, даже если его нет у нас в контактах
 	if (msg.chat.type === "private") {
-    	// console.log("Message sent from private chat.");
+
+        // console.log("Message sent from private chat.");
         var questionText = msg.chat.text || "<empty>";
         console.log("Got question: "+questionText);
+
+        if (questionText === '/start') {
+            return; // игнорируем стартовое сообщение
+        }
+
     	bot.forwardMessage(config.chatid, msg.chat.id, msg.message_id);
     	bot.sendMessage(msg.chat.id, config.answer);
     }
